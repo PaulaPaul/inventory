@@ -54,10 +54,14 @@ while quit == false
 	inventory_array.each_with_index do |inv_item, index|
 		puts "     #{index + 1}: #{inv_item.name}"
 	end
-	puts "or enter 0 to exit"
+	puts "or enter 0, or any non-numeric value, to exit"
 	choice = gets.chomp.to_i - 1
 	if choice < 0
-		break
+		puts "Zero or a non-numeric value was entered. Are you sure you want to exit this terrific inventory program? (enter 'yes' to confirm)."
+		confirm = gets.chomp.downcase
+		if confirm == "yes"
+			break
+		end
 	elsif choice < 0 || choice > inventory_array.length - 1
 		puts "Sorry, enter a valid choice"
 	else
